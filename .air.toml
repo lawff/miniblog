@@ -3,7 +3,7 @@ testdata_dir = "testdata"
 tmp_dir = "_output"
 
 [build]
-  args_bin = []
+  args_bin = ["-c", "configs/miniblog.yaml"]
   bin = "_output/miniblog"
   cmd = "make"
   delay = 0

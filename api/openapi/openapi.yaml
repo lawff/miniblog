@@ -548,7 +548,7 @@ components:
           example: 'introduction to a good go practical project: miniblog'
         content:
           type: string
-          example: "Details see https://github.com/marmotedu/miniblog/blob/master/README.md"
+          example: "Details see https://github.com/lawff/miniblog/blob/master/README.md"
     CreatePostResponse:
       type: object
       properties:
@@ -569,7 +569,7 @@ components:
           example: 'introduction to a good go practical project: miniblog'
         content:
           type: string
-          example: "Details see https://github.com/marmotedu/miniblog/blob/master/README.md"
+          example: "Details see https://github.com/lawff/miniblog/blob/master/README.md"
         createdAt:
           type: string
           format: date-time
@@ -592,7 +592,7 @@ components:
           example: 'introduction to a good go practical project: miniblog'
         content:
           type: string
-          example: "Details see https://github.com/marmotedu/miniblog/blob/master/README.md"
+          example: "Details see https://github.com/lawff/miniblog/blob/master/README.md"
         createdAt:
           type: string
           format: date-time
@@ -609,7 +609,7 @@ components:
           example: 'introduction to a good go practical project: miniblog'
         content:
           type: string
-          example: "Details see https://github.com/marmotedu/miniblog/blob/master/README.md"
+          example: "Details see https://github.com/lawff/miniblog/blob/master/README.md"
     ListPostResponse:
       type: object
       properties:

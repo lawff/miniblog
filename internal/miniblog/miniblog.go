@@ -15,6 +15,8 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/lawff/miniblog/internal/pkg/core"
+	"github.com/lawff/miniblog/internal/pkg/errno"
 	"github.com/lawff/miniblog/internal/pkg/log"
 	"github.com/lawff/miniblog/pkg/version/verflag"
 	"github.com/spf13/cobra"
@@ -96,14 +98,14 @@ func run() error {
 
 	// 注册 404 Handler.
 	g.NoRoute(func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{"code": 10003, "message": "Page not found."})
+		core.WriteResponse(c, errno.ErrPageNotFound, nil)
 	})
 
 	// 注册 /healthz handler.
 	g.GET("/healthz", func(c *gin.Context) {
 		log.C(c).Infow("Healthz function called")
 
-		c.JSON(http.StatusOK, gin.H{"status": "ok"})
+		core.WriteResponse(c, nil, map[string]string{"status": "ok"})
 	})
 
 	// 创建 HTTP Server 实例
@@ -119,8 +121,8 @@ func run() error {
 	}()
 
 	// 等待中断信号优雅地关闭服务器（10 秒超时)。
-	//quit := make(chan os.Signal, 1)
-	quit := make(chan os.Signal)
+	quit := make(chan os.Signal, 1)
+	// quit := make(chan os.Signal)
 	// kill 默认会发送 syscall.SIGTERM 信号
 	// kill -2 发送 syscall.SIGINT 信号，我们常用的 CTRL + C 就是触发系统 SIGINT 信号
 	// kill -9 发送 syscall.SIGKILL 信号，但是不能被捕获，所以不需要添加它

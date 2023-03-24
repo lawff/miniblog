@@ -15,7 +15,9 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/lawff/miniblog/internal/pkg/known"
 	"github.com/lawff/miniblog/internal/pkg/log"
+	"github.com/lawff/miniblog/pkg/token"
 	"github.com/lawff/miniblog/pkg/version/verflag"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -87,6 +89,9 @@ func run() error {
 	if err := initStore(); err != nil {
 		return err
 	}
+
+	// 设置 token 包的签发密钥，用于 token 包 token 的签发和解析
+	token.Init(viper.GetString("jwt-secret"), known.XUsernameKey)
 
 	// 设置 Gin 模式
 	gin.SetMode(viper.GetString("runmode"))

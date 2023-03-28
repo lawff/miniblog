@@ -64,3 +64,5 @@ tags
 # Custom
 /_output
 /configs
+.DS_Store
+/upload

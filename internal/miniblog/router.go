@@ -66,7 +66,7 @@ func installRouters(g *gin.Engine) error {
 		id := c.Query("id")
 
 		// 将两个pdf文件合并为一个pdf文件
-		outputFilePath := "./upload/" + uuid.New().String() + ".pdf"
+		outputFilePath := "./upload/merge-" + uuid.New().String() + ".pdf"
 		if err := api.MergeCreateFile(convertStringToList(id), outputFilePath, nil); err != nil {
 			log.C(c).Errorw("Merge pdf file failed", "error", err)
 			c.AbortWithError(http.StatusInternalServerError, err)
